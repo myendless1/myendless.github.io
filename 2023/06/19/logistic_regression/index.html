@@ -9,15 +9,17 @@
   <meta name="description" content="逻辑回归代价函数如下：$$J(\vec{w},b)&#x3D;-\frac{1}{m}\sum_{i&#x3D;1}^{m}{[y^{(i)}log(f_{\vec{w},b}(\vec{x}^{(i)})+(1-y^{(i)})log(1-f_{\vec{w},b}(\vec{x}^{(i)}))]}\tag{1}$$其求导结果如下：$$\frac{\partial }{\partial w_j">
 <meta property="og:type" content="article">
 <meta property="og:title" content="逻辑回归代价函数求导过程">
-<meta property="og:url" content="http://example.com/2023/06/19/logistic%20regression/index.html">
+<meta property="og:url" content="http://example.com/2023/06/19/logistic_regression/index.html">
 <meta property="og:site_name" content="MYENDLESS">
 <meta property="og:description" content="逻辑回归代价函数如下：$$J(\vec{w},b)&#x3D;-\frac{1}{m}\sum_{i&#x3D;1}^{m}{[y^{(i)}log(f_{\vec{w},b}(\vec{x}^{(i)})+(1-y^{(i)})log(1-f_{\vec{w},b}(\vec{x}^{(i)}))]}\tag{1}$$其求导结果如下：$$\frac{\partial }{\partial w_j">
 <meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://github.com/myendless1/myendless1.github.io/raw/main/2023/06/19/logistic_regression/img1.svg">
 <meta property="article:published_time" content="2023-06-19T12:43:07.000Z">
-<meta property="article:modified_time" content="2023-06-19T18:27:05.393Z">
+<meta property="article:modified_time" content="2023-06-19T18:29:26.508Z">
 <meta property="article:author" content="Li Ying">
 <meta property="article:tag" content="deeplearning.ai">
 <meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://github.com/myendless1/myendless1.github.io/raw/main/2023/06/19/logistic_regression/img1.svg">
   
     <link rel="alternate" href="/atom.xml" title="MYENDLESS" type="application/atom+xml">
   
@@ -76,9 +78,9 @@
 </header>
 
       <div class="outer">
-        <section id="main"><article id="post-logistic regression" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+        <section id="main"><article id="post-logistic_regression" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
   <div class="article-meta">
-    <a href="/2023/06/19/logistic%20regression/" class="article-date">
+    <a href="/2023/06/19/logistic_regression/" class="article-date">
   <time class="dt-published" datetime="2023-06-19T12:43:07.000Z" itemprop="datePublished">2023-06-19</time>
 </a>
     
@@ -102,13 +104,13 @@
 <p>$$<br>\frac{\partial }{\partial b}J(\vec{w},b)&#x3D;\frac{1}{m}\sum_{i&#x3D;1}^{m}(f_{\vec{w},b}(\vec{x}^{(i)})-y^{(i)})\tag{3}<br>$$</p>
 <p>以对$$w_j$$的偏导数为例，其计算过程如下：</p>
 <p>已知：<br>$$<br>f_{\vec{w},b}(\vec{x}^{(i)})&#x3D;\frac{1}{1+e^{-(\vec{w}^T\vec{x}+b)}}	\tag{4}<br>$$<br>将sigmoid函数$$f$$对$$w_j$$求偏导数得：<br>$$<br>f_{\vec{w},b}^{‘}(\vec{x}^{(i)})&#x3D;\frac{\vec{x}^{(i)}<em>je^{\vec{w}^T\vec{x}+b}}{(1+e^{-(\vec{w}^T\vec{x}+b)})^{2}}&#x3D;\vec{x}^{(i)}<em>jf</em>{\vec{w},b}(\vec{x}^{(i)})(1-f</em>{\vec{w},b}(\vec{x}^{(i)}))\tag{5}<br>$$<br>将总损失函数$$J(\vec{w},b)$$对$$w_j$$求偏导数得：<br>$$<br>\frac{\partial }{\partial w_j}J(\vec{w},b)&#x3D;-\frac{1}{m}\sum_{i&#x3D;1}^{m}[y^{(i)}f_{\vec{w},b}^{‘}(\vec{x}^{(i)})\frac{1}{f_{\vec{w},b}(\vec{x}^{(i)})}-f_{\vec{w},b}^{‘}(\vec{x}^{(i)})(1-y^{(i)})\frac{1}{1-f_{\vec{w},b}(\vec{x}^{(i)})}]\tag{6}<br>$$<br>将（5）式代入（6）式得</p>
-<p>![img1](<a target="_blank" rel="noopener" href="https://github.com/myendless1/myendless1.github.io/raw/main/2023/06/19/logistic">https://github.com/myendless1/myendless1.github.io/raw/main/2023/06/19/logistic</a> regression&#x2F;img1.svg)<br>$$<br>\begin{aligned}\frac{\partial }{\partial w_j}J(\vec{w},b)<br>&amp;&#x3D;-\frac{1}{m}\sum_{i&#x3D;1}^{m}x_j^{(i)}f_{\vec{w},b}(\vec{x}^{(i)})(1-f_{\vec{w},b}(\vec{x}^{(i)}))[y^{(i)}\frac{1}{f_{\vec{w},b}(\vec{x}^{(i)})}-(1-y^{(i)})\frac{1}{1-f_{\vec{w},b}(\vec{x}^{(i)})}]\<br>&amp;&#x3D;-\frac{1}{m}\sum_{i&#x3D;1}^{m}[y^{(i)}(1-f_{\vec{w},b}(\vec{x}^{(i)}))-(1-y^{(i)})f_{\vec{w},b}(\vec{x}^{(i)})]x_j^{(i)}\<br>&amp;&#x3D;-\frac{1}{m}\sum_{i&#x3D;1}^{m}[y^{(i)}-f_{\vec{w},b}(\vec{x}^{(i)})]x_j^{(i)}\<br>&amp;&#x3D;\frac{1}{m}\sum_{i&#x3D;1}^{m}[f_{\vec{w},b}(\vec{x}^{(i)})-y^{(i)}]x_j^{(i)}<br>\end{aligned}\tag{7}<br>$$</p>
+<p><img src="https://github.com/myendless1/myendless1.github.io/raw/main/2023/06/19/logistic_regression/img1.svg" alt="img1"><br>$$<br>\begin{aligned}\frac{\partial }{\partial w_j}J(\vec{w},b)<br>&amp;&#x3D;-\frac{1}{m}\sum_{i&#x3D;1}^{m}x_j^{(i)}f_{\vec{w},b}(\vec{x}^{(i)})(1-f_{\vec{w},b}(\vec{x}^{(i)}))[y^{(i)}\frac{1}{f_{\vec{w},b}(\vec{x}^{(i)})}-(1-y^{(i)})\frac{1}{1-f_{\vec{w},b}(\vec{x}^{(i)})}]\<br>&amp;&#x3D;-\frac{1}{m}\sum_{i&#x3D;1}^{m}[y^{(i)}(1-f_{\vec{w},b}(\vec{x}^{(i)}))-(1-y^{(i)})f_{\vec{w},b}(\vec{x}^{(i)})]x_j^{(i)}\<br>&amp;&#x3D;-\frac{1}{m}\sum_{i&#x3D;1}^{m}[y^{(i)}-f_{\vec{w},b}(\vec{x}^{(i)})]x_j^{(i)}\<br>&amp;&#x3D;\frac{1}{m}\sum_{i&#x3D;1}^{m}[f_{\vec{w},b}(\vec{x}^{(i)})-y^{(i)}]x_j^{(i)}<br>\end{aligned}\tag{7}<br>$$</p>
 <p>对b求导结果类似。</p>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://example.com/2023/06/19/logistic%20regression/" data-id="clj36j10d0000b0sh560e6cob" data-title="逻辑回归代价函数求导过程" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      <a data-url="http://example.com/2023/06/19/logistic_regression/" data-id="clj36y9x90000zcsh1cxkhfql" data-title="逻辑回归代价函数求导过程" class="article-share-link"><span class="fa fa-share">Share</span></a>
       
       
       
@@ -165,7 +167,7 @@
       <ul>
         
           <li>
-            <a href="/2023/06/19/logistic%20regression/">逻辑回归代价函数求导过程</a>
+            <a href="/2023/06/19/logistic_regression/">逻辑回归代价函数求导过程</a>
           </li>
         
       </ul>
