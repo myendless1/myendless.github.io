@@ -13,13 +13,11 @@
 <meta property="og:site_name" content="Hexo">
 <meta property="og:description" content="逻辑回归代价函数如下：$$J(\vec{w},b)&#x3D;-\frac{1}{m}\sum_{i&#x3D;1}^{m}{[y^{(i)}log(f_{\vec{w},b}(\vec{x}^{(i)})+(1-y^{(i)})log(1-f_{\vec{w},b}(\vec{x}^{(i)}))]}\tag{1}$$其求导结果如下：$$\frac{\partial }{\partial w_j">
 <meta property="og:locale" content="en_US">
-<meta property="og:image" content="http://latex.codecogs.com/svg.latex?%5Csum_%7Bn=1%7D%5E%5Cinfty%5Cfrac%7B1%7D%7Bn%5E2%7D=%5Cfrac%7B%5Cpi%5E2%7D%7B6%7D">
 <meta property="article:published_time" content="2023-06-19T12:43:07.000Z">
-<meta property="article:modified_time" content="2023-06-19T17:28:30.914Z">
+<meta property="article:modified_time" content="2023-06-19T17:30:29.902Z">
 <meta property="article:author" content="John Doe">
-<meta property="article:tag" content="deeplearning.ai,深度学习">
+<meta property="article:tag" content="deeplearning.ai;深度学习">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="http://latex.codecogs.com/svg.latex?%5Csum_%7Bn=1%7D%5E%5Cinfty%5Cfrac%7B1%7D%7Bn%5E2%7D=%5Cfrac%7B%5Cpi%5E2%7D%7B6%7D">
   
     <link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
   
@@ -105,8 +103,6 @@
 <p>以对$$w_j$$的偏导数为例，其计算过程如下：</p>
 <p>已知：<br>$$<br>f_{\vec{w},b}(\vec{x}^{(i)})&#x3D;\frac{1}{1+e^{-(\vec{w}^T\vec{x}+b)}}	\tag{4}<br>$$<br>将sigmoid函数$$f$$对$$w_j$$求偏导数得：<br>$$<br>f_{\vec{w},b}^{‘}(\vec{x}^{(i)})&#x3D;\frac{\vec{x}^{(i)}<em>je^{\vec{w}^T\vec{x}+b}}{(1+e^{-(\vec{w}^T\vec{x}+b)})^{2}}&#x3D;\vec{x}^{(i)}<em>jf</em>{\vec{w},b}(\vec{x}^{(i)})(1-f</em>{\vec{w},b}(\vec{x}^{(i)}))\tag{5}<br>$$<br>将总损失函数$$J(\vec{w},b)$$对$$w_j$$求偏导数得：<br>$$<br>\frac{\partial }{\partial w_j}J(\vec{w},b)&#x3D;-\frac{1}{m}\sum_{i&#x3D;1}^{m}[y^{(i)}f_{\vec{w},b}^{‘}(\vec{x}^{(i)})\frac{1}{f_{\vec{w},b}(\vec{x}^{(i)})}-f_{\vec{w},b}^{‘}(\vec{x}^{(i)})(1-y^{(i)})\frac{1}{1-f_{\vec{w},b}(\vec{x}^{(i)})}]\tag{6}<br>$$<br>将（5）式代入（6）式得<br>$$<br>\begin{aligned}\frac{\partial }{\partial w_j}J(\vec{w},b)<br>&amp;&#x3D;-\frac{1}{m}\sum_{i&#x3D;1}^{m}x_j^{(i)}f_{\vec{w},b}(\vec{x}^{(i)})(1-f_{\vec{w},b}(\vec{x}^{(i)}))[y^{(i)}\frac{1}{f_{\vec{w},b}(\vec{x}^{(i)})}-(1-y^{(i)})\frac{1}{1-f_{\vec{w},b}(\vec{x}^{(i)})}]\<br>&amp;&#x3D;-\frac{1}{m}\sum_{i&#x3D;1}^{m}[y^{(i)}(1-f_{\vec{w},b}(\vec{x}^{(i)}))-(1-y^{(i)})f_{\vec{w},b}(\vec{x}^{(i)})]x_j^{(i)}\<br>&amp;&#x3D;-\frac{1}{m}\sum_{i&#x3D;1}^{m}[y^{(i)}-f_{\vec{w},b}(\vec{x}^{(i)})]x_j^{(i)}\<br>&amp;&#x3D;\frac{1}{m}\sum_{i&#x3D;1}^{m}[f_{\vec{w},b}(\vec{x}^{(i)})-y^{(i)}]x_j^{(i)}<br>\end{aligned}\tag{7}<br>$$</p>
 <p>对b求导结果类似。</p>
-<p>![1](<a target="_blank" rel="noopener" href="http://latex.codecogs.com/svg.latex?%5Cfrac%7B%5Cpartial">http://latex.codecogs.com/svg.latex?\frac{\partial</a> }{\partial w_j}J(\vec{w},b)&#x3D;-\frac{1}{m}\sum_{i&#x3D;1}^{m}[y^{(i)}f_{\vec{w},b}^{‘}(\vec{x}^{(i)}\frac{1}{f_{\vec{w},b}(\vec{x}^{(i)}}-f_{\vec{w},b}^{‘}(\vec{x}^{(i)}(1-y^{(i)}\frac{1}{1-f_{\vec{w},b}(\vec{x}^{(i)}}]\tag{6})</p>
-<p><img src="http://latex.codecogs.com/svg.latex?%5Csum_%7Bn=1%7D%5E%5Cinfty%5Cfrac%7B1%7D%7Bn%5E2%7D=%5Cfrac%7B%5Cpi%5E2%7D%7B6%7D" alt="4"></p>
 
       
     </div>
@@ -115,7 +111,7 @@
       
       
       
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/deeplearning-ai-%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/" rel="tag">deeplearning.ai,深度学习</a></li></ul>
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/deeplearning-ai-%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/" rel="tag">deeplearning.ai;深度学习</a></li></ul>
 
     </footer>
   </div>
@@ -146,7 +142,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Tags</h3>
     <div class="widget">
-      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/deeplearning-ai-%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/" rel="tag">deeplearning.ai,深度学习</a></li></ul>
+      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/deeplearning-ai-%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/" rel="tag">deeplearning.ai;深度学习</a></li></ul>
     </div>
   </div>
 
@@ -156,7 +152,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Tag Cloud</h3>
     <div class="widget tagcloud">
-      <a href="/tags/deeplearning-ai-%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/" style="font-size: 10px;">deeplearning.ai,深度学习</a>
+      <a href="/tags/deeplearning-ai-%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/" style="font-size: 10px;">deeplearning.ai;深度学习</a>
     </div>
   </div>
 
