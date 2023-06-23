@@ -73,6 +73,56 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-先验概率-后验概率" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2023/06/23/%E5%85%88%E9%AA%8C%E6%A6%82%E7%8E%87-%E5%90%8E%E9%AA%8C%E6%A6%82%E7%8E%87/" class="article-date">
+  <time class="dt-published" datetime="2023-06-23T07:54:41.000Z" itemprop="datePublished">2023-06-23</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/2023/06/23/%E5%85%88%E9%AA%8C%E6%A6%82%E7%8E%87-%E5%90%8E%E9%AA%8C%E6%A6%82%E7%8E%87/">先验概率&amp;后验概率</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <h2 id="一、全概率公式"><a href="#一、全概率公式" class="headerlink" title="一、全概率公式"></a>一、全概率公式</h2><p>设事件$B_1$,$B_2$,$B_3$,…,$B_n$构成一个完备事件组，即两两互斥且并集为全集$S$。则对于任一事件 $A$有<br>$$<br>P(A)&#x3D;\sum_{i&#x3D;1}^{n}P(B_i)P(A|B_i)\tag1<br>$$<br>全概率公式是“由因推果”的思想。</p>
+<h2 id="二、贝叶斯公式"><a href="#二、贝叶斯公式" class="headerlink" title="二、贝叶斯公式"></a>二、贝叶斯公式</h2><p>符号定义同上，有：<br>$$<br>P(B_i|A)&#x3D;\frac{P(B_i)P(A|B_i)}{P(A)}&#x3D;\frac{P(B_i)P(A|B_i)}{\sum_{i&#x3D;1}^{n}P(B_i)P(A|B_i)}\tag2<br>$$<br>贝叶斯公式是“由果溯因”的思想。</p>
+<h2 id="三、先验概率和后验概率"><a href="#三、先验概率和后验概率" class="headerlink" title="三、先验概率和后验概率"></a>三、先验概率和后验概率</h2><p><strong>先验概率（prior probability）：</strong>指根据以往经验和分析。在实验或采样前就可以得到的概率。</p>
+<p><strong>后验概率（posterior probability）：</strong>指某件事已经发生，想要计算这件事发生的原因是由某个因素引起的概率。</p>
+<p>引自**@笨笨**（<a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/38567891">&lt;基础系列&gt;1：先验概率 &amp; 后验概率 - 知乎 (zhihu.com)</a>）</p>
+<h3 id="观测值角度"><a href="#观测值角度" class="headerlink" title="观测值角度"></a>观测值角度</h3><p><strong>先验概率</strong>：没有观测值时使用经验来得出的概率。</p>
+<p><strong>后验概率</strong>：通过观测值反推未观测事件（无法观测事件）发生的概率，推测过程常需要使用先验概率。</p>
+<p>总结自**@鸡蛋口语**（ </p>
+<p>[知乎]: <a target="_blank" rel="noopener" href="https://www.zhihu.com/question/315348473/answer/618943610">https://www.zhihu.com/question/315348473/answer/618943610</a>	“什么是后验概率？”</p>
+<p>）</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2023/06/23/%E5%85%88%E9%AA%8C%E6%A6%82%E7%8E%87-%E5%90%8E%E9%AA%8C%E6%A6%82%E7%8E%87/" data-id="clj8b63kx0000k8sheptz3oga" data-title="先验概率&amp;后验概率" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E5%91%A8%E5%BF%97%E5%8D%8E%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/" rel="tag">周志华机器学习</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
     <article id="post-logistic_regression" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
   <div class="article-meta">
     <a href="/2023/06/19/logistic_regression/" class="article-date">
@@ -103,8 +153,8 @@
 <p>$$<br>\frac{\partial }{\partial w_j}J(\vec{w},b)&#x3D;-\frac{1}{m}\sum_{i&#x3D;1}^{m}[y^{(i)}f_{\vec{w},b}^{‘}(\vec{x}^{(i)})\frac{1}{f_{\vec{w},b}(\vec{x}^{(i)})}-f_{\vec{w},b}^{‘}(\vec{x}^{(i)})(1-y^{(i)})\frac{1}{1-f_{\vec{w},b}(\vec{x}^{(i)})}]\tag{6}<br>$$<br>将（5）式代入（6）式得</p>
 <p>$$<br>\frac{\partial }{\partial w_j}J(\vec{w},b)<br>$$</p>
 <p>$$<br>&#x3D;-\frac{1}{m}\sum_{i&#x3D;1}^{m}x_j^{(i)}f_{\vec{w},b}(\vec{x}^{(i)})(1-f_{\vec{w},b}(\vec{x}^{(i)}))[y^{(i)}\frac{1}{f_{\vec{w},b}(\vec{x}^{(i)})}-(1-y^{(i)})\frac{1}{1-f_{\vec{w},b}(\vec{x}^{(i)})}]<br>$$</p>
-<p>$$<br>&#x3D;-\frac{1}{m}\sum_{i&#x3D;1}^{m}[y^{(i)}(1-f_{\vec{w},b}(\vec{x}^{(i)}))-(1-y^{(i)})f_{\vec{w},b}(\vec{x}^{(i)})]x_j^{(i)}\<br>$$</p>
-<p>$$<br>&#x3D;-\frac{1}{m}\sum_{i&#x3D;1}^{m}[y^{(i)}-f_{\vec{w},b}(\vec{x}^{(i)})]x_j^{(i)}\<br>$$</p>
+<p>$$<br>&#x3D;-\frac{1}{m}\sum_{i&#x3D;1}^{m}[y^{(i)}(1-f_{\vec{w},b}(\vec{x}^{(i)}))-(1-y^{(i)})f_{\vec{w},b}(\vec{x}^{(i)})]x_j^{(i)}<br>$$</p>
+<p>$$<br>&#x3D;-\frac{1}{m}\sum_{i&#x3D;1}^{m}[y^{(i)}-f_{\vec{w},b}(\vec{x}^{(i)})]x_j^{(i)}<br>$$</p>
 <p>$$<br>&#x3D;\frac{1}{m}\sum_{i&#x3D;1}^{m}[f_{\vec{w},b}(\vec{x}^{(i)})-y^{(i)}]x_j^{(i)}<br>\tag{7}<br>$$</p>
 <p>对b求导结果类似。</p>
 
@@ -138,7 +188,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Tags</h3>
     <div class="widget">
-      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/deeplearning-ai/" rel="tag">deeplearning.ai</a></li></ul>
+      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/deeplearning-ai/" rel="tag">deeplearning.ai</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%91%A8%E5%BF%97%E5%8D%8E%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/" rel="tag">周志华机器学习</a></li></ul>
     </div>
   </div>
 
@@ -148,7 +198,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Tag Cloud</h3>
     <div class="widget tagcloud">
-      <a href="/tags/deeplearning-ai/" style="font-size: 10px;">deeplearning.ai</a>
+      <a href="/tags/deeplearning-ai/" style="font-size: 10px;">deeplearning.ai</a> <a href="/tags/%E5%91%A8%E5%BF%97%E5%8D%8E%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/" style="font-size: 10px;">周志华机器学习</a>
     </div>
   </div>
 
@@ -168,6 +218,10 @@
     <h3 class="widget-title">Recent Posts</h3>
     <div class="widget">
       <ul>
+        
+          <li>
+            <a href="/2023/06/23/%E5%85%88%E9%AA%8C%E6%A6%82%E7%8E%87-%E5%90%8E%E9%AA%8C%E6%A6%82%E7%8E%87/">先验概率&amp;后验概率</a>
+          </li>
         
           <li>
             <a href="/2023/06/19/logistic_regression/">逻辑回归代价函数求导过程</a>
