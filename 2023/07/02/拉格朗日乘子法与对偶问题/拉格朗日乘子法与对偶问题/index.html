@@ -4,20 +4,22 @@
   <meta charset="utf-8">
   
   
-  <title>先验概率&amp;后验概率 | MYENDLESS</title>
+  <title>拉格朗日乘子法与对偶问题 | MYENDLESS</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <meta name="description" content="一、全概率公式设事件$B_1$,$B_2$,$B_3$,…,$B_n$构成一个完备事件组，即两两互斥且并集为全集$S$。则对于任一事件 $A$有$$P(A)&#x3D;\sum_{i&#x3D;1}^{n}P(B_i)P(A|B_i)\tag1$$全概率公式是“由因推果”的思想。 二、贝叶斯公式符号定义同上，有：$$P(B_i|A)&#x3D;\frac{P(B_i)P(A|B_i)}{P(A)}">
+  <meta name="description" content="之前上科研课堂《复杂网络》时计算机学院的潘老师给我们讲过线性规划的对偶问题，但已经忘了如何从原问题转化到到对偶问题了。今天在周志华的《机器学习》一书中见到了使用拉格朗日乘子法来求对偶问题的方法，觉得有必要学习，同时记此笔记。 本文引用内容主要来源于知乎，原链接：拉格朗日乘子法与对偶问题 - 知乎 (zhihu.com)、梯度、方向导数与等值面 - 知乎 (zhihu.com)。仅作为学习使用。 梯">
 <meta property="og:type" content="article">
-<meta property="og:title" content="先验概率&amp;后验概率">
-<meta property="og:url" content="https://myendless1.github.io/2023/06/23/%E5%85%88%E9%AA%8C%E6%A6%82%E7%8E%87-%E5%90%8E%E9%AA%8C%E6%A6%82%E7%8E%87/index.html">
+<meta property="og:title" content="拉格朗日乘子法与对偶问题">
+<meta property="og:url" content="https://myendless1.github.io/2023/07/02/%E6%8B%89%E6%A0%BC%E6%9C%97%E6%97%A5%E4%B9%98%E5%AD%90%E6%B3%95%E4%B8%8E%E5%AF%B9%E5%81%B6%E9%97%AE%E9%A2%98/%E6%8B%89%E6%A0%BC%E6%9C%97%E6%97%A5%E4%B9%98%E5%AD%90%E6%B3%95%E4%B8%8E%E5%AF%B9%E5%81%B6%E9%97%AE%E9%A2%98/index.html">
 <meta property="og:site_name" content="MYENDLESS">
-<meta property="og:description" content="一、全概率公式设事件$B_1$,$B_2$,$B_3$,…,$B_n$构成一个完备事件组，即两两互斥且并集为全集$S$。则对于任一事件 $A$有$$P(A)&#x3D;\sum_{i&#x3D;1}^{n}P(B_i)P(A|B_i)\tag1$$全概率公式是“由因推果”的思想。 二、贝叶斯公式符号定义同上，有：$$P(B_i|A)&#x3D;\frac{P(B_i)P(A|B_i)}{P(A)}">
+<meta property="og:description" content="之前上科研课堂《复杂网络》时计算机学院的潘老师给我们讲过线性规划的对偶问题，但已经忘了如何从原问题转化到到对偶问题了。今天在周志华的《机器学习》一书中见到了使用拉格朗日乘子法来求对偶问题的方法，觉得有必要学习，同时记此笔记。 本文引用内容主要来源于知乎，原链接：拉格朗日乘子法与对偶问题 - 知乎 (zhihu.com)、梯度、方向导数与等值面 - 知乎 (zhihu.com)。仅作为学习使用。 梯">
 <meta property="og:locale" content="en_US">
-<meta property="article:published_time" content="2023-06-23T07:54:41.000Z">
-<meta property="article:modified_time" content="2023-06-23T08:32:28.778Z">
+<meta property="og:image" content="https://myendless1.github.io/.io//Users/34707/blog/source_posts/%E7%AD%89%E5%80%BC%E9%9D%A2%E5%92%8C%E7%BA%A6%E6%9D%9F%E6%9B%B2%E9%9D%A2.webp">
+<meta property="article:published_time" content="2023-07-02T01:04:46.000Z">
+<meta property="article:modified_time" content="2023-07-02T01:39:26.101Z">
 <meta property="article:author" content="Li Ying">
 <meta property="article:tag" content="周志华机器学习">
 <meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://myendless1.github.io/.io//Users/34707/blog/source_posts/%E7%AD%89%E5%80%BC%E9%9D%A2%E5%92%8C%E7%BA%A6%E6%9D%9F%E6%9B%B2%E9%9D%A2.webp">
   
     <link rel="alternate" href="/atom.xml" title="MYENDLESS" type="application/atom+xml">
   
@@ -76,10 +78,10 @@
 </header>
 
       <div class="outer">
-        <section id="main"><article id="post-先验概率-后验概率" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+        <section id="main"><article id="post-拉格朗日乘子法与对偶问题/拉格朗日乘子法与对偶问题" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
   <div class="article-meta">
-    <a href="/2023/06/23/%E5%85%88%E9%AA%8C%E6%A6%82%E7%8E%87-%E5%90%8E%E9%AA%8C%E6%A6%82%E7%8E%87/" class="article-date">
-  <time class="dt-published" datetime="2023-06-23T07:54:41.000Z" itemprop="datePublished">2023-06-23</time>
+    <a href="/2023/07/02/%E6%8B%89%E6%A0%BC%E6%9C%97%E6%97%A5%E4%B9%98%E5%AD%90%E6%B3%95%E4%B8%8E%E5%AF%B9%E5%81%B6%E9%97%AE%E9%A2%98/%E6%8B%89%E6%A0%BC%E6%9C%97%E6%97%A5%E4%B9%98%E5%AD%90%E6%B3%95%E4%B8%8E%E5%AF%B9%E5%81%B6%E9%97%AE%E9%A2%98/" class="article-date">
+  <time class="dt-published" datetime="2023-07-02T01:04:46.000Z" itemprop="datePublished">2023-07-02</time>
 </a>
     
   </div>
@@ -90,7 +92,7 @@
         
   
     <h1 class="p-name article-title" itemprop="headline name">
-      先验概率&amp;后验概率
+      拉格朗日乘子法与对偶问题
     </h1>
   
 
@@ -98,19 +100,19 @@
     
     <div class="e-content article-entry" itemprop="articleBody">
       
-        <h2 id="一、全概率公式"><a href="#一、全概率公式" class="headerlink" title="一、全概率公式"></a>一、全概率公式</h2><p>设事件$B_1$,$B_2$,$B_3$,…,$B_n$构成一个完备事件组，即两两互斥且并集为全集$S$。则对于任一事件 $A$有<br>$$<br>P(A)&#x3D;\sum_{i&#x3D;1}^{n}P(B_i)P(A|B_i)\tag1<br>$$<br>全概率公式是“由因推果”的思想。</p>
-<h2 id="二、贝叶斯公式"><a href="#二、贝叶斯公式" class="headerlink" title="二、贝叶斯公式"></a>二、贝叶斯公式</h2><p>符号定义同上，有：<br>$$<br>P(B_i|A)&#x3D;\frac{P(B_i)P(A|B_i)}{P(A)}&#x3D;\frac{P(B_i)P(A|B_i)}{\sum_{i&#x3D;1}^{n}P(B_i)P(A|B_i)}\tag2<br>$$<br>贝叶斯公式是“由果溯因”的思想。</p>
-<h2 id="三、先验概率和后验概率"><a href="#三、先验概率和后验概率" class="headerlink" title="三、先验概率和后验概率"></a>三、先验概率和后验概率</h2><p><strong>先验概率（prior probability）：</strong>指根据以往经验和分析。在实验或采样前就可以得到的概率。</p>
-<p><strong>后验概率（posterior probability）：</strong>指某件事已经发生，想要计算这件事发生的原因是由某个因素引起的概率。</p>
-<p>引自@<strong>笨笨</strong>（<a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/38567891">&lt;基础系列&gt;1：先验概率 &amp; 后验概率 - 知乎 (zhihu.com)</a>）</p>
-<h3 id="观测值角度"><a href="#观测值角度" class="headerlink" title="观测值角度"></a>观测值角度</h3><p><strong>先验概率</strong>：没有观测值时使用经验来得出的概率。</p>
-<p><strong>后验概率</strong>：通过观测值反推未观测事件（无法观测事件）发生的概率，推测过程常需要使用先验概率。</p>
-<p>总结自@<strong>鸡蛋口语</strong>（ <a target="_blank" rel="noopener" href="https://www.zhihu.com/question/315348473/answer/618943610%EF%BC%89">https://www.zhihu.com/question/315348473/answer/618943610）</a></p>
+        <p>之前上科研课堂《复杂网络》时计算机学院的潘老师给我们讲过线性规划的对偶问题，但已经忘了如何从原问题转化到到对偶问题了。今天在周志华的《机器学习》一书中见到了使用拉格朗日乘子法来求对偶问题的方法，觉得有必要学习，同时记此笔记。</p>
+<p>本文引用内容主要来源于知乎，原链接：<a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/114574438">拉格朗日乘子法与对偶问题 - 知乎 (zhihu.com)</a>、<a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/111723231">梯度、方向导数与等值面 - 知乎 (zhihu.com)</a>。仅作为学习使用。</p>
+<h2 id="梯度与等值面"><a href="#梯度与等值面" class="headerlink" title="梯度与等值面"></a>梯度与等值面</h2><ul>
+<li>函数值最快下降的方向是梯度。函数$f$的梯度记为$\bigtriangledown f$。</li>
+<li>空间中函数值相等的面叫等值面，函数值相等的线叫等值线。</li>
+<li>沿梯度方向移动到下一个等值面（或等值线）的速度最快，梯度垂直于函数的等值面。</li>
+</ul>
+<h2 id="等式约束"><a href="#等式约束" class="headerlink" title="等式约束"></a>等式约束</h2><p><img src="/.io//Users\34707\blog\source_posts\等值面和约束曲面.webp" alt="等值面和约束曲面"></p>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://myendless1.github.io/2023/06/23/%E5%85%88%E9%AA%8C%E6%A6%82%E7%8E%87-%E5%90%8E%E9%AA%8C%E6%A6%82%E7%8E%87/" data-id="clj8b63kx0000k8sheptz3oga" data-title="先验概率&amp;后验概率" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      <a data-url="https://myendless1.github.io/2023/07/02/%E6%8B%89%E6%A0%BC%E6%9C%97%E6%97%A5%E4%B9%98%E5%AD%90%E6%B3%95%E4%B8%8E%E5%AF%B9%E5%81%B6%E9%97%AE%E9%A2%98/%E6%8B%89%E6%A0%BC%E6%9C%97%E6%97%A5%E4%B9%98%E5%AD%90%E6%B3%95%E4%B8%8E%E5%AF%B9%E5%81%B6%E9%97%AE%E9%A2%98/" data-id="cljkrlhlj00003gsh0mc26hql" data-title="拉格朗日乘子法与对偶问题" class="article-share-link"><span class="fa fa-share">Share</span></a>
       
       
       
@@ -122,19 +124,10 @@
     
 <nav id="article-nav">
   
-    <a href="/2023/07/02/%E6%8B%89%E6%A0%BC%E6%9C%97%E6%97%A5%E4%B9%98%E5%AD%90%E6%B3%95%E4%B8%8E%E5%AF%B9%E5%81%B6%E9%97%AE%E9%A2%98/%E6%8B%89%E6%A0%BC%E6%9C%97%E6%97%A5%E4%B9%98%E5%AD%90%E6%B3%95%E4%B8%8E%E5%AF%B9%E5%81%B6%E9%97%AE%E9%A2%98/" id="article-nav-newer" class="article-nav-link-wrap">
-      <strong class="article-nav-caption">Newer</strong>
-      <div class="article-nav-title">
-        
-          拉格朗日乘子法与对偶问题
-        
-      </div>
-    </a>
   
-  
-    <a href="/2023/06/19/logistic_regression/" id="article-nav-older" class="article-nav-link-wrap">
+    <a href="/2023/06/23/%E5%85%88%E9%AA%8C%E6%A6%82%E7%8E%87-%E5%90%8E%E9%AA%8C%E6%A6%82%E7%8E%87/" id="article-nav-older" class="article-nav-link-wrap">
       <strong class="article-nav-caption">Older</strong>
-      <div class="article-nav-title">逻辑回归代价函数求导过程</div>
+      <div class="article-nav-title">先验概率&amp;后验概率</div>
     </a>
   
 </nav>
